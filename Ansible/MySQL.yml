@@ -1,0 +1,9 @@
+- name: Install MySQL database server
+  hosts: test
+  become: yes
+  tasks:
+  - name: Download sources
+      yum:
+        name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+        state: present
+        
