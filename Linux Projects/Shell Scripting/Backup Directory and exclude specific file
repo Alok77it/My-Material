@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#user to enter the path of the directory
+echo "Enter the path of the directory:"
+read directory
+
+# Create an array to store the paths of files or directories to exclude. The variable is an indexed array. You cannot unset this attribute.
+declare -a exclude_paths
+
+# Loop to prompt the user to enter additional paths to exclude
+while true; do
+    echo "Enter the path of a file or directory to exclude (or press Enter to finish):"
+    read exclude_path
+    
+    # Break out of the loop if the user pressed Enter (-z is use for length of string is zero)
+    if [[ -z "$exclude_path" ]]; then
+        break
+    fi
+    
+    # Add the excluded path to the array
+    exclude_paths+=("$exclude_path")
+done
+
+# Set the current timestamp as the filename prefix
+filename_prefix=$(date "+%Y-%m-%d_%H-%M-%S")
+
+# Construct the full filename for the backup archive
+filename="$filename_prefix-service-logs.tar.gz"
+
+# Use tar to create the backup archive, excluding the specified files and directories
+tar -czf /backup/"$filename" \
+    --exclude="${exclude_paths[@]}" \
+    "$directory"
+
+if [[ $? -eq 0 ]]; then
+    echo "Backup successfully created as '$filename'"
+else
+    echo "An error occurred while creating the backup"
+fi

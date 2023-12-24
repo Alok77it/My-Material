@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Take service form User
+
+echo "Enter the name of Service: "
+read service_name
+
+#Provide Source and destination path
+
+src_path="/var/log/${service_name}/"
+dst_path="/backup/"
+
+#Create backup
+
+tar -czf /"${dst_path}"/"${service_name}"$(date +"%Y-%m-%d_%H-%M-%S").tar.gz  "${src_path}"
+
+#Check Backup is successfull or not
+
+if [ $? -eq 0 ]; then
+    echo "Backup of ${service_name} logs was successful."
+else
+    echo "Failed to backup ${service_name} logs."
+fi
