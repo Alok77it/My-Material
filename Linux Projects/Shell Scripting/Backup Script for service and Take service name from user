@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Take service form User
+#Take input service form User
 
 echo "Enter the name of Service: "
 read service_name
