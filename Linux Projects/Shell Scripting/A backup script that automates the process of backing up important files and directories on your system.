@@ -1,26 +1,29 @@
 #!/bin/bash
 
-# Set source directory and destination path
 SOURCE="/path/to/important/directories"
 DESTINATION="/path/to/backup/directory"
 
-# Check if source directory exists
 if [ ! -d "$SOURCE" ]; then
     echo "Source directory does not exist."
     exit 1
 fi
 
-# Create destination directory if it doesn't exist
 mkdir -p "${DESTINATION}"
 
-# Get current date
 CURRENT_DATE=$(date +"%Y-%m-%d")
 
-# Create backup file name with timestamp
 BACKUP_FILE="${DESTINATION}/backup_${CURRENT_DATE}.tar.gz"
 
-# Compress and create backup
 tar -czf "${BACKUP_FILE}" "${SOURCE}"
 
-# Log success message
 echo "Backup successfully created at ${BACKUP_FILE}"
+
+
+
+Note:- # Set source directory and destination path (line3,4)
+        # Check if source directory exists (line 6-9)
+        # Create destination directory if it doesn't exist (line 11)
+        # Get current date (line13)
+        # Create backup file name with timestamp (line 15)
+        # Compress and create backup (line 17)
+        # Log success message (line 19)
