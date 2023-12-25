@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Backup configuration
+SRC_FILE="important"
+DEST_USER="devil"
+DEST_HOST="remotehost.com"
+DEST_PATH="/home/devil"
+BACKUP_FILENAME="${SRC_FILE}-$(date +%Y%m%d-%H%M%S).tar.gz"
+
+# Create the backup file
+tar -czf $BACKUP_FILENAME $SRC_FILE
+
+# Copy the backup file to the remote server
+scp $BACKUP_FILENAME $DEST_USER@$DEST_HOST:$DEST_PATH
+
+# Remove the local backup file
+rm $BACKUP_FILENAME
+
+echo "Backup is completed successfully."
+
+#Enter the ip to /etc/hosts with remotehost.com name
