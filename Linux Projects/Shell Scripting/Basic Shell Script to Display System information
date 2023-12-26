@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Display OS and version
+echo "Operating System: $OSTYPE"
+
+# Display architecture
+echo "Architecture: $(uname -m)"
+
+# Display number of processors
+echo "Number of Processors: $(nproc)"
+
+# Display system uptime
+echo "System Uptime: $(uptime -p)"
+
+# Display free disk space
+echo "Free Disk Space: $(df -h --total | tail -1)"
