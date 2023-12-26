@@ -77,7 +77,7 @@
 
 
 
-# We need to create /file/first-website.com
+# We need to create /file/first-website.conf
 #Content inside file
 
 <VirtualHost *:80>
