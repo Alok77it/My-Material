@@ -1,16 +1,33 @@
 #!/bin/bash
 
 # Display OS and version
-echo "Operating System: $OSTYPE"
+os_info=$(uname -a)
+os_kernel=$(uname -r)
+os_version=$(uname -v)
+os_name=$(uname -o)
+
+# Print OS Information
+echo "OS Info: $os_info"
+echo "Kernel: $os_kernel"
+echo "Version: $os_version"
+echo "Name: $os_name"
 
 # Display architecture
+cpu_info=$(lscpu)
+echo "CPU_INFO: $cpu_info"
 echo "Architecture: $(uname -m)"
 
 # Display number of processors
 echo "Number of Processors: $(nproc)"
 
 # Display system uptime
-echo "System Uptime: $(uptime -p)"
+up_days=$(uptime -p | grep -oP '[0-9]+ day')
+up_hours=$(uptime -p | grep -oP '[0-9]+ hour')
+up_minutes=$(uptime -p | grep -oP '[0-9]+ minute')
+
+# Print System Uptime Information
+echo "System Uptime: $up_days $up_hours $up_minutes"
+
 
 # Display free disk space
 echo "Free Disk Space: $(df -h --total | tail -1)"
