@@ -15,7 +15,6 @@ echo "Name: $os_name"
 # Display architecture
 cpu_info=$(lscpu)
 echo "CPU_INFO: $cpu_info"
-echo "Architecture: $(uname -m)"
 
 # Display number of processors
 echo "Number of Processors: $(nproc)"
