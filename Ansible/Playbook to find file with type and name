@@ -1,8 +1,6 @@
 ---
 - name: Find file by name and file type
   hosts: all
-  gather_facts: no
-  become: yes
   vars_prompt:
     - name: "file_name"
       prompt: "Enter file name"
